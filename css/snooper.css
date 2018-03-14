@@ -8,9 +8,19 @@
     --sn-color-menu-border: rgb(185, 185, 185);
     --sn-color-menu-hover: rgb(45, 61, 82);
 
+    --sn-color-asset-title: rgb(180, 79, 79);
+    --sn-color-asset-body: rgb(196, 93, 93);
+
+    --sn-color-transaction-title: rgb(161, 144, 68);
+    --sn-color-transaction-body: rgb(184, 162, 65);
+
     --sn-color-snoop-search: rgb(42, 60, 82);
     --sn-color-snoop-search-input-bg: rgb(23, 105, 211);
     --sn-color-snoop-search-input: white;
+
+    --sn-color-snoop-transactions: rgb(50, 71, 97);
+
+    --sn-color-snoop-details: rgb(58, 78, 102);
 
     --sn-menu-width: 75px;
     --sn-menu-font-size: calc(var(--sn-menu-width) * 0.4);
@@ -90,6 +100,8 @@ body
     background-color: var(--sn-color-1);
 
     position: relative;
+
+    overflow: hidden;
 }
 
 #snooper #content .content-pane
@@ -101,7 +113,7 @@ body
 
 #snooper #content #sn-options
 {
-    left: -100%;
+    left: 100%;
 }
 
 #snooper #content #snoop
@@ -114,15 +126,52 @@ body
 {
     height: 100%;
     width: 33.33%;
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+}
+
+#snooper #content #snoop .snoop-title
+{
+    width: 100%;
+    padding: 27px;
+    color: white;
+}
+
+#snooper #content #snoop .snoop-pane .snoop-loading
+{
+    width: 100%;
+    padding: 25px;
+}
+
+@keyframes loading {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+#snooper #content #snoop .snoop-pane .snoop-loading img
+{
+    margin-left: calc(50% - 25px);
+    animation-name: loading;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 #snooper #content #snoop #snoop-search
 {
     background-color: var(--sn-color-snoop-search);
-    display: flex;
-    flex-direction: column;
+}
 
-    overflow-y: auto;
+#snooper #content #snoop #snoop-transactions
+{
+    background-color: var(--sn-color-snoop-transactions);
+}
+
+#snooper #content #snoop #snoop-details
+{
+    background-color: var(--sn-color-snoop-details);
 }
 
 #snooper #content #snoop #snoop-search #snoop-search-input-container
@@ -165,7 +214,7 @@ body
     cursor: pointer;
 }
 
-#snooper #content #snoop #snoop-search .snoop-asset
+#snooper #content #snoop .snoop-pane .snoop-item
 {
     width: calc(100% - 40px);
     margin-top: 10px;
@@ -180,27 +229,37 @@ body
     cursor: pointer;
 }
 
-#snooper #content #snoop #snoop-search .snoop-asset:hover
+#snooper #content #snoop .snoop-pane .snoop-item:hover
 {
     transition: 0.2s;
     transform: scale(1.01, 1.01);
 }
 
-#snooper #content #snoop #snoop-search .snoop-asset .asset-id,
-#snooper #content #snoop #snoop-search .snoop-asset .asset-data
+#snooper #content #snoop .snoop-pane .snoop-item .item-id,
+#snooper #content #snoop .snoop-pane .snoop-item .item-data
 {
     width: 100%;
     padding: 10px;
     overflow: hidden;
 }
 
-#snooper #content #snoop #snoop-search .snoop-asset .asset-id
+#snooper #content #snoop .snoop-pane .snoop-item .asset-id
 {
-    background-color: rgb(133, 20, 20);
+    background-color: var(--sn-color-asset-title);
 }
 
 
-#snooper #content #snoop #snoop-search .snoop-asset .asset-data
+#snooper #content #snoop .snoop-pane .snoop-item .asset-data
 {
-    background-color: firebrick;
+    background-color: var(--sn-color-asset-body);
+}
+
+#snooper #content #snoop .snoop-pane .snoop-item .transaction-id
+{
+    background-color: var(--sn-color-transaction-title);
+}
+
+#snooper #content #snoop .snoop-pane .snoop-item .transaction-data
+{
+    background-color: var(--sn-color-transaction-body);
 }

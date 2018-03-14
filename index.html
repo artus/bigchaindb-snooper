@@ -37,24 +37,51 @@
 
                 <!-- Search pane -->
                 <div id="snoop-search" class="snoop-pane">
-                    
+
                     <div id="snoop-search-input-container">
-                        <input v-model="searchInput" v-on:keyup="onSearchInputChange()" type="text">
-                        <a><i class="fas fa-search"></i></a>
+                        <input v-model="searchInput" v-on:keyup="onSearchInputChange()" placeholder="🔎 Search for an asset..." type="text">
+                        <a v-on:click="resetSearchInput()">
+                            <i class="fas fa-times"></i>
+                        </a>
                     </div>
 
-                    <div v-for="asset in assets" class="snoop-asset">
-                        <div class="asset-id">{{asset.id}}</div>
-                        <div class="asset-data">{{asset}}</div>
+                    <div v-if="isLoading" class="snoop-loading">
+                        <img alt="loading icon" src="img/loading.png" width="50" height="50">
+                    </div>
+
+                    <div v-if="assets.length == 0 && !isLoading && searchInput.length != 0" class="snoop-title">
+                        <p>No assets found.</p>
+                    </div>
+
+                    <div v-for="asset in assets" class="snoop-asset snoop-item" v-on:click="displayAssetTransactions(asset.id)">
+                        <div class="asset-id item-id">{{asset.id}}</div>
+                        <div class="asset-data item-data">{{asset}}</div>
                     </div>
 
                 </div>
 
                 <!-- Transactions pane -->
-                <div id="snoop-transaction" class="snoop-pane"></div>
+                <div id="snoop-transactions" class="snoop-pane">
+
+                    <div class="snoop-title">
+                        <h3>Transactions</h3>
+                    </div>
+
+                    <div v-for="transaction in transactions" class="snoop-transaction snoop-item">
+                        <div class="item-id transaction-id">{{transaction.id}}</div>
+                        <div class="item-data transaction-data ">{{transaction}}</div>
+                    </div>
+
+                </div>
 
                 <!-- Details pane -->
-                <div id="snoop-detail" class="snoop-pane"></div>
+                <div id="snoop-details" class="snoop-pane">
+
+                    <div class="snoop-title">
+                        <h3>Transaction details</h3>
+                    </div>
+
+                </div>
 
             </div>
 
