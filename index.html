@@ -8,6 +8,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/snooper.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <title>BigchainDB Snooper</title>
 </head>
@@ -53,7 +54,7 @@
                         <p>No assets found.</p>
                     </div>
 
-                    <div v-for="asset in assets" class="snoop-asset snoop-item" v-on:click="displayAssetTransactions(asset.id)">
+                    <div v-for="asset in assets" class="snoop-asset snoop-item animated bounceInLeft" v-on:click="displayAssetTransactions(asset.id)">
                         <div class="asset-id item-id">{{asset.id}}</div>
                         <div class="asset-data item-data">{{asset}}</div>
                     </div>
@@ -69,7 +70,7 @@
                         </h3>
                     </div>
 
-                    <div v-for="transaction in transactions" v-on:click="displayTransactionDetails(transaction)" class="snoop-transaction snoop-item">
+                    <div v-for="transaction in transactions" v-on:click="displayTransactionDetails(transaction)" class="snoop-transaction snoop-item animated bounceInLeft">
                         <div class="item-id transaction-id">{{transaction.id}}</div>
                         <div class="item-data transaction-data ">{{transaction}}</div>
                     </div>
@@ -84,7 +85,7 @@
                     </div>
                     <span v-if="currentTransaction">
 
-                        <div class="snoop-item">
+                         <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                 id
                             </div>
@@ -93,7 +94,7 @@
                             </div>
                         </div>
 
-                        <div class="snoop-item">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                version 
                             </div>
@@ -102,7 +103,7 @@
                             </div>
                         </div>
  
-                        <div class="snoop-item">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                operation
                             </div>
@@ -111,7 +112,7 @@
                             </div>
                         </div>
 
-                        <div class="snoop-item">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                 inputs
                             </div>
@@ -121,7 +122,7 @@
                         </div>
 
 
-                        <div class="snoop-item">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                 outputs
                             </div>
@@ -130,7 +131,7 @@
                             </div>
                         </div>
 
-                        <div class="snoop-item">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                 asset
                             </div>
@@ -139,7 +140,7 @@
                             </div>
                         </div>
 
-                        <div class="snoop-item">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                 metadata
                             </div>
