@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+:root
+{
+    --sn-color-1: #4D5D6C;
+    --sn-color-2: #1C2939;
+    --sn-color-menu-text: white;
+    --sn-color-menu-border: rgb(185, 185, 185);
+    --sn-color-menu-hover: rgb(45, 61, 82);
+
+    --sn-color-snoop-search: rgb(42, 60, 82);
+    --sn-color-snoop-search-input-bg: rgb(23, 105, 211);
+    --sn-color-snoop-search-input: white;
+
+    --sn-menu-width: 75px;
+    --sn-menu-font-size: calc(var(--sn-menu-width) * 0.4);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    
+    font-family: 'Raleway', sans-serif;
+}
+
+body
+{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: gray;
+}
+
+#snooper
+{
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--sn-color-1);
+
+    display: flex;
+    flex-direction: row;
+}
+
+#snooper #menu
+{
+    height: 100%;
+    width: var(--sn-menu-width);
+
+    background-color: var(--sn-color-2);
+    color: var(--sn-color-menu-text);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#snooper #menu .menu-button
+{
+    width: var(--sn-menu-width);
+    height: var(--sn-menu-width);
+
+
+    line-height: var(--sn-menu-width);
+    font-size:   var(--sn-menu-font-size);
+
+    text-align: center;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid var(--sn-color-menu-border);
+}
+
+#snooper #menu .menu-button:hover
+{
+    transition: 0.2s;
+    background-color: var(--sn-color-menu-hover);
+}
+
+#snooper #content
+{
+    height: 100%;
+    width: 100%;
+    background-color: var(--sn-color-1);
+
+    position: relative;
+}
+
+#snooper #content .content-pane
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#snooper #content #sn-options
+{
+    left: -100%;
+}
+
+#snooper #content #snoop
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#snooper #content #snoop .snoop-pane
+{
+    height: 100%;
+    width: 33.33%;
+}
+
+#snooper #content #snoop #snoop-search
+{
+    background-color: var(--sn-color-snoop-search);
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+}
+
+#snooper #content #snoop #snoop-search #snoop-search-input-container
+{
+    width: 100%;
+    padding: 20px;
+}
+
+#snooper #content #snoop #snoop-search #snoop-search-input-container input
+{
+    float: left; 
+    width: calc(100% - 35px);
+    height: 40px;
+    padding: 10px;
+    font-size: 15px;
+
+    border: 0px;
+
+    background-color: var(--sn-color-snoop-search-input-bg);
+    color: var(--sn-color-snoop-search-input);
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#snooper #content #snoop #snoop-search #snoop-search-input-container a
+{
+    float: left;
+    width: calc(35px);
+    height: 40px;
+    padding: 10px;
+    font-size: 15px;
+
+    background-color: var(--sn-color-snoop-search-input-bg);
+    color: var(--sn-color-snoop-search-input);
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    cursor: pointer;
+}
+
+#snooper #content #snoop #snoop-search .snoop-asset
+{
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+}
+
+#snooper #content #snoop #snoop-search .snoop-asset:hover
+{
+    transition: 0.2s;
+    transform: scale(1.01, 1.01);
+}
+
+#snooper #content #snoop #snoop-search .snoop-asset .asset-id,
+#snooper #content #snoop #snoop-search .snoop-asset .asset-data
+{
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+}
+
+#snooper #content #snoop #snoop-search .snoop-asset .asset-id
+{
+    background-color: rgb(133, 20, 20);
+}
+
+
+#snooper #content #snoop #snoop-search .snoop-asset .asset-data
+{
+    background-color: firebrick;
+}
