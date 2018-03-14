@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <!-- font awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -46,11 +48,11 @@
                         </a>
                     </div>
 
-                    <div v-if="isLoading" class="snoop-loading">
+                    <div v-if="assetsLoading" class="snoop-loading">
                         <img alt="loading icon" src="img/loading.png" width="50" height="50">
                     </div>
 
-                    <div v-if="assets.length == 0 && !isLoading && searchInput.length != 0" class="snoop-title">
+                    <div v-if="assets.length == 0 && !assetsLoading && searchInput.length != 0" class="snoop-title">
                         <p>No assets found.</p>
                     </div>
 
@@ -70,6 +72,10 @@
                         </h3>
                     </div>
 
+                    <div class="snoop-loading">
+                        <img v-if="transactionsLoading" alt="loading icon" src="img/loading.png" width="50" height="50">
+                    </div>
+
                     <div v-for="transaction in transactions" v-on:click="displayTransactionDetails(transaction)" class="snoop-transaction snoop-item animated bounceInLeft">
                         <div class="item-id transaction-id">{{transaction.id}}</div>
                         <div class="item-data transaction-data ">{{transaction}}</div>
@@ -85,7 +91,7 @@
                     </div>
                     <span v-if="currentTransaction">
 
-                         <div class="snoop-item animated bounceInLeft">
+                        <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
                                 id
                             </div>
@@ -96,16 +102,16 @@
 
                         <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
-                               version 
+                                version
                             </div>
                             <div class="item-id detail-body">
                                 {{currentTransaction.version}}
                             </div>
                         </div>
- 
+
                         <div class="snoop-item animated bounceInLeft">
                             <div class="item-id detail-title">
-                               operation
+                                operation
                             </div>
                             <div class="item-data detail-body">
                                 {{currentTransaction.operation}}

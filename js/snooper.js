@@ -36,7 +36,8 @@ var snooper = new Vue({
 
         // Delay query
         isTyping: false,
-        isLoading: false,
+        assetsLoading: false,
+        transactionsLoading: false,
 
         // Transaction snooping
         currentTransaction: undefined,
@@ -52,27 +53,44 @@ var snooper = new Vue({
             this.currentTransaction = undefined;
         },
         onAssetQueryResponse(response) {
-            this.stopLoading();
+            this.stopLoading("assets");
             this.assets = response;
         },
         onTransactionsResponse(response) {
+            this.stopLoading("transactions");
             this.transactions = response;
         },
-        startLoading() {
-            this.isLoading = true;
+        startLoading(item) {
+            switch (item) {
+                case "assets":
+                    this.assetsLoading = true;
+                    break;
+
+                case "transactions":
+                    this.transactionsLoading = true;
+                    break;
+            }
         },
-        stopLoading() {
-            this.isLoading = false;
+        stopLoading(item) {
+            switch (item) {
+                case "assets":
+                    this.assetsLoading = false;
+                    break;
+
+                case "transactions":
+                    this.transactionsLoading = false;
+                    break;
+            }
+
         },
         onSearchInputChange() {
-            if (this.searchInput == "") 
-            {
-                this.stopLoading();
+            if (this.searchInput == "") {
+                this.stopLoading("assets");
                 this.assets = new Array();
             }
             else {
                 this.assets = new Array();
-                this.startLoading();
+                this.startLoading("assets");
                 this.isTyping = true;
 
                 setTimeout(() => {
@@ -88,6 +106,8 @@ var snooper = new Vue({
                 this.snooperApi.queryAssets(this.searchInput, this.onAssetQueryResponse);
         },
         displayAssetTransactions(assetId) {
+            this.startLoading("transactions");
+            this.transactions = new Array();
             this.snooperApi.getTransactions(assetId, this.onTransactionsResponse);
         },
         displayTransactionDetails(transaction) {
