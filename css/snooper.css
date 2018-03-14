@@ -27,6 +27,8 @@
 
     --sn-menu-width: 75px;
     --sn-menu-font-size: calc(var(--sn-menu-width) * 0.4);
+
+    --sn-item-border-radius: 3px;
 }
 
 *
@@ -267,6 +269,8 @@ body
     flex-direction: column;
 
     cursor: pointer;
+
+    box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.1);
 }
 
 #snooper #content #snoop .snoop-pane .snoop-item:hover
@@ -281,6 +285,18 @@ body
     width: 100%;
     padding: 10px;
     overflow: hidden;
+}
+
+#snooper #content #snoop .snoop-pane .snoop-item .item-id
+{
+    border-top-left-radius: var(--sn-item-border-radius);
+    border-top-right-radius: var(--sn-item-border-radius);
+}
+
+#snooper #content #snoop .snoop-pane .snoop-item .item-data
+{
+    border-bottom-left-radius: var(--sn-item-border-radius);
+    border-bottom-right-radius: var(--sn-item-border-radius);
 }
 
 #snooper #content #snoop .snoop-pane .snoop-item .asset-id
