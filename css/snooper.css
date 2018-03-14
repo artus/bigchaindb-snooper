@@ -14,6 +14,9 @@
     --sn-color-transaction-title: rgb(161, 144, 68);
     --sn-color-transaction-body: rgb(184, 162, 65);
 
+    --sn-color-detail-title: rgb(74, 124, 189);
+    --sn-color-detail-body: rgb(112, 151, 201);
+
     --sn-color-snoop-search: rgb(42, 60, 82);
     --sn-color-snoop-search-input-bg: rgb(23, 105, 211);
     --sn-color-snoop-search-input: white;
@@ -120,6 +123,7 @@ body
 {
     display: flex;
     flex-direction: row;
+    overflow-y: auto;
 }
 
 #snooper #content #snoop .snoop-pane
@@ -128,8 +132,26 @@ body
     width: 33.33%;
     display: flex;
     flex-direction: column;
-
     overflow-y: auto;
+}
+
+@media(max-width: 800px)
+{
+    #snooper #content #snoop
+    {
+        flex-direction: column !important;
+    }
+
+    #snooper #content #snoop .snoop-pane
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    #snooper #content #snoop #snoop-details:hover
+    {
+        width: 100% !important;
+    }
 }
 
 #snooper #content #snoop .snoop-title
@@ -172,6 +194,24 @@ body
 #snooper #content #snoop #snoop-details
 {
     background-color: var(--sn-color-snoop-details);
+}
+
+#snooper #content #snoop #snoop-details:hover
+{
+    width: 80%;
+    transition: 0.5s;
+}
+
+#snooper #content #snoop #snoop-details:hover::before
+{
+    width: 10%;
+    transition: 0.5s;
+}
+
+#snooper #content #snoop #snoop-details:hover::before::before
+{
+    width: 10%;
+    transition: 0.5s;
 }
 
 #snooper #content #snoop #snoop-search #snoop-search-input-container
@@ -262,4 +302,22 @@ body
 #snooper #content #snoop .snoop-pane .snoop-item .transaction-data
 {
     background-color: var(--sn-color-transaction-body);
+}
+
+#snooper #content #snoop .snoop-pane .snoop-item .detail-title
+{
+    background-color: var(--sn-color-detail-title);
+    word-wrap: break-word;
+}
+
+#snooper #content #snoop .snoop-pane .snoop-item .detail-body
+{
+    background-color: var(--sn-color-detail-body);
+    word-wrap: break-word;
+}
+
+/* we don't want details to transform on hover */
+#snooper #content #snoop #snoop-details .snoop-item:hover
+{
+    transform: scale(1);
 }

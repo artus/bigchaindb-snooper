@@ -64,10 +64,12 @@
                 <div id="snoop-transactions" class="snoop-pane">
 
                     <div class="snoop-title">
-                        <h3>Transactions</h3>
+                        <h3>Transactions
+                            <span v-if="transactions.length != 0">: {{transactions.length}}</span>
+                        </h3>
                     </div>
 
-                    <div v-for="transaction in transactions" class="snoop-transaction snoop-item">
+                    <div v-for="transaction in transactions" v-on:click="displayTransactionDetails(transaction)" class="snoop-transaction snoop-item">
                         <div class="item-id transaction-id">{{transaction.id}}</div>
                         <div class="item-data transaction-data ">{{transaction}}</div>
                     </div>
@@ -80,6 +82,72 @@
                     <div class="snoop-title">
                         <h3>Transaction details</h3>
                     </div>
+                    <span v-if="currentTransaction">
+
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                                id
+                            </div>
+                            <div class="item-data detail-body">
+                                {{currentTransaction.id}}
+                            </div>
+                        </div>
+
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                               version 
+                            </div>
+                            <div class="item-id detail-body">
+                                {{currentTransaction.version}}
+                            </div>
+                        </div>
+ 
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                               operation
+                            </div>
+                            <div class="item-data detail-body">
+                                {{currentTransaction.operation}}
+                            </div>
+                        </div>
+
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                                inputs
+                            </div>
+                            <div class="item-data detail-body">
+                                {{currentTransaction.inputs}}
+                            </div>
+                        </div>
+
+
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                                outputs
+                            </div>
+                            <div class="item-data detail-body">
+                                {{currentTransaction.outputs}}
+                            </div>
+                        </div>
+
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                                asset
+                            </div>
+                            <div class="item-data detail-body">
+                                {{currentTransaction.asset}}
+                            </div>
+                        </div>
+
+                        <div class="snoop-item">
+                            <div class="item-id detail-title">
+                                metadata
+                            </div>
+                            <div class="item-data detail-body">
+                                {{currentTransaction.metadata}}
+                            </div>
+                        </div>
+                    </span>
 
                 </div>
 

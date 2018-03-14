@@ -38,6 +38,9 @@ var snooper = new Vue({
         isTyping: false,
         isLoading: false,
 
+        // Transaction snooping
+        currentTransaction: undefined,
+
         // Input fields
         searchInput: "",
     },
@@ -46,6 +49,7 @@ var snooper = new Vue({
             this.searchInput = "";
             this.assets = new Array();
             this.transactions = new Array();
+            this.currentTransaction = undefined;
         },
         onAssetQueryResponse(response) {
             this.stopLoading();
@@ -86,6 +90,8 @@ var snooper = new Vue({
         displayAssetTransactions(assetId) {
             this.snooperApi.getTransactions(assetId, this.onTransactionsResponse);
         },
-
+        displayTransactionDetails(transaction) {
+            this.currentTransaction = transaction;
+        }
     }
 });
