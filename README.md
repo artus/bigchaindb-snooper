@@ -1,4 +1,4 @@
-#bigchaindb-snooper
+# bigchaindb-snooper
 ## For when you quickly need to query the network.
 
 I really needed a visual tool which I could use to search for assets on a certain BigchainDB network on the fly. I didn't really found one so I decided to create one. Enjoy!
