@@ -54,6 +54,10 @@ var snooper = new Vue({
         },
         onAssetQueryResponse(response) {
             this.stopLoading("assets");
+            for (asset in response)
+            {
+                console.log(JSON.stringify(response[asset].data, null, 2));
+            }
             this.assets = response;
         },
         onTransactionsResponse(response) {
@@ -112,6 +116,6 @@ var snooper = new Vue({
         },
         displayTransactionDetails(transaction) {
             this.currentTransaction = transaction;
-        }
+        },
     }
 });
