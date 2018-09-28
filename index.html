@@ -21,10 +21,10 @@
 
         <!-- left menu -->
         <div id="menu">
-            <div class="menu-button">
+            <div class="menu-button" v-on:click="showSettings = false">
                 <i class="fas fa-eye"></i>
             </div>
-            <div class="menu-button">
+            <div class="menu-button" v-on:click="showSettings = true">
                 <i class="fas fa-cog"></i>
             </div>
         </div>
@@ -33,10 +33,25 @@
         <div id="content">
 
             <!-- Options page -->
-            <div id="sn-options" class="content-pane"></div>
+            <div id="sn-options" class="content-pane" v-if="showSettings">
+
+                <!-- Url settings -->
+                <div class="settings-pane">
+
+                    <div class="form-group">
+                        <h2>Edit settings</h2>
+                        <p>Enter the URL of the BigchainDB Node you want to inspect.</p>
+
+                        <input type="text" class="snoop-input" placeholder="https://test.bigchaindb.com" v-model="urlInput">
+                        <button v-on:click="saveSettings()">Apply</button>
+                    </div>
+
+                </div>
+
+            </div>
 
             <!-- Snoop page -->
-            <div id="snoop" class="content-pane">
+            <div id="snoop" class="content-pane" v-if="!showSettings">
 
                 <!-- Search pane -->
                 <div id="snoop-search" class="snoop-pane">

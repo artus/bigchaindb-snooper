@@ -116,19 +116,14 @@ body
     height: 100%;
 }
 
-#snooper #content #sn-options
-{
-    left: 100%;
-}
-
-#snooper #content #snoop
+#snooper #content .content-pane
 {
     display: flex;
     flex-direction: row;
     overflow-y: auto;
 }
 
-#snooper #content #snoop .snoop-pane
+#snooper #content .content-pane .snoop-pane
 {
     height: 100%;
     width: 33.33%;
@@ -144,26 +139,26 @@ body
         flex-direction: column !important;
     }
 
-    #snooper #content #snoop .snoop-pane
+    #snooper #content .content-pane .snoop-pane
     {
         width: 100%;
         height: 100%;
     }
 
-    #snooper #content #snoop #snoop-details:hover
+    #snooper #content .content-pane #snoop-details:hover
     {
         width: 100% !important;
     }
 }
 
-#snooper #content #snoop .snoop-title
+#snooper #content .content-pane .snoop-title
 {
     width: 100%;
     padding: 27px;
     color: white;
 }
 
-#snooper #content #snoop .snoop-pane .snoop-loading
+#snooper #content .content-pane .snoop-pane .snoop-loading
 {
     width: 100%;
     padding: 25px;
@@ -174,55 +169,55 @@ body
     to {transform: rotate(360deg);}
 }
 
-#snooper #content #snoop .snoop-pane .snoop-loading img
+#snooper #content .content-pane .snoop-pane .snoop-loading img
 {
     margin-left: calc(50% - 25px);
     animation-name: loading;
     animation-duration: 0.7s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
 }
 
-#snooper #content #snoop #snoop-search
+#snooper #content .content-pane #snoop-search
 {
-    background-color: var(--sn-color-snoop-search);
+background-color: var(--sn-color-snoop-search);
 }
 
-#snooper #content #snoop #snoop-transactions
+#snooper #content .content-pane #snoop-transactions
 {
-    background-color: var(--sn-color-snoop-transactions);
+background-color: var(--sn-color-snoop-transactions);
 }
 
-#snooper #content #snoop #snoop-details
+#snooper #content .content-pane #snoop-details
 {
-    background-color: var(--sn-color-snoop-details);
+background-color: var(--sn-color-snoop-details);
 }
 
-#snooper #content #snoop #snoop-details:hover
+#snooper #content .content-pane #snoop-details:hover
 {
-    width: 80%;
-    transition: 0.5s;
+width: 80%;
+transition: 0.5s;
 }
 
-#snooper #content #snoop #snoop-details:hover::before
+#snooper #content .content-pane #snoop-details:hover::before
 {
-    width: 10%;
-    transition: 0.5s;
+width: 10%;
+transition: 0.5s;
 }
 
-#snooper #content #snoop #snoop-details:hover::before::before
+#snooper #content .content-pane #snoop-details:hover::before::before
 {
-    width: 10%;
-    transition: 0.5s;
+width: 10%;
+transition: 0.5s;
 }
 
-#snooper #content #snoop #snoop-search #snoop-search-input-container
+#snooper #content .content-pane #snoop-search #snoop-search-input-container
 {
     width: 100%;
     padding: 20px;
 }
 
-#snooper #content #snoop #snoop-search #snoop-search-input-container input
+#snooper #content .content-pane #snoop-search #snoop-search-input-container input, .snoop-input
 {
     float: left; 
     width: calc(100% - 35px);
@@ -239,7 +234,12 @@ body
     border-bottom-left-radius: 5px;
 }
 
-#snooper #content #snoop #snoop-search #snoop-search-input-container a
+.snoop-input
+{
+    border-radius: 5px;
+}
+
+#snooper #content .content-pane #snoop-search #snoop-search-input-container a
 {
     float: left;
     width: calc(35px);
@@ -256,7 +256,7 @@ body
     cursor: pointer;
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item
+#snooper #content .content-pane .snoop-pane .snoop-item
 {
     width: calc(100% - 40px);
     margin-top: 10px;
@@ -273,67 +273,110 @@ body
     box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.1);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item:hover
+#snooper #content .content-pane .snoop-pane .snoop-item:hover
 {
     transition: 0.2s;
     transform: scale(1.01, 1.01);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .item-id,
-#snooper #content #snoop .snoop-pane .snoop-item .item-data
+#snooper #content .content-pane .snoop-pane .snoop-item .item-id,
+#snooper #content .content-pane .snoop-pane .snoop-item .item-data
 {
     width: 100%;
     padding: 10px;
     overflow: hidden;
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .item-id
+#snooper #content .content-pane .snoop-pane .snoop-item .item-id
 {
     border-top-left-radius: var(--sn-item-border-radius);
     border-top-right-radius: var(--sn-item-border-radius);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .item-data
+#snooper #content .content-pane .snoop-pane .snoop-item .item-data
 {
     border-bottom-left-radius: var(--sn-item-border-radius);
     border-bottom-right-radius: var(--sn-item-border-radius);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .asset-id
+#snooper #content .content-pane .snoop-pane .snoop-item .asset-id
 {
     background-color: var(--sn-color-asset-title);
 }
 
 
-#snooper #content #snoop .snoop-pane .snoop-item .asset-data
+#snooper #content .content-pane .snoop-pane .snoop-item .asset-data
 {
     background-color: var(--sn-color-asset-body);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .transaction-id
+#snooper #content .content-pane .snoop-pane .snoop-item .transaction-id
 {
     background-color: var(--sn-color-transaction-title);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .transaction-data
+#snooper #content .content-pane .snoop-pane .snoop-item .transaction-data
 {
     background-color: var(--sn-color-transaction-body);
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .detail-title
+#snooper #content .content-pane .snoop-pane .snoop-item .detail-title
 {
     background-color: var(--sn-color-detail-title);
     word-wrap: break-word;
 }
 
-#snooper #content #snoop .snoop-pane .snoop-item .detail-body
+#snooper #content .content-pane .snoop-pane .snoop-item .detail-body
 {
     background-color: var(--sn-color-detail-body);
     word-wrap: break-word;
 }
 
 /* we don't want details to transform on hover */
-#snooper #content #snoop #snoop-details .snoop-item:hover
+#snooper #content .content-pane #snoop-details .snoop-item:hover
 {
     transform: scale(1);
+}
+
+.settings-pane 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--sn-color-menu-hover);
+}
+
+.settings-pane .form-group 
+{
+    max-width: 600px;
+    padding: 0 25px;
+    color: white;
+}
+
+.settings-pane .form-group *
+{
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.settings-pane .form-group button
+{
+    width: auto;
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+
+    color: white !important;
+    background-color: rgb(201, 65, 65);
+    transition: background-color 0.2s;
+}
+
+.settings-pane .form-group button:hover
+{
+    background-color: rgb(228, 84, 84);
 }

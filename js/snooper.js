@@ -34,6 +34,10 @@ var snooper = new Vue({
         assets: new Array(),
         transactions: new Array(),
 
+        // Settings
+        showSettings: false,
+        urlInput: "",
+
         // Delay query
         isTyping: false,
         assetsLoading: false,
@@ -117,5 +121,9 @@ var snooper = new Vue({
         displayTransactionDetails(transaction) {
             this.currentTransaction = transaction;
         },
+        saveSettings() {
+            this.snooperApi = new BigchainDBSnooper(this.urlInput);
+            setTimeout(function() { this.showSettings = false; }.bind(this), 1000);
+        }
     }
 });
